@@ -6,7 +6,7 @@ DESeq2_DEA <- function(mainDir, # path to the 'work' directory
                        meta_file, # path to the file containing the metadata information for the txi_mtx
                        design, # the column of the sample_metadata file which will be used for the design of the DEA
                        padjThreshold = 0.05, # Set the threshold for padj when running DESeq2 and producing a filtered count matrix. Default is set to 0.05.
-                       lfcThreshold = 2 # Set the threshold for log2FoldChange when running DESeq2 and producing a filtered count matrix. Default is set to 1.
+                       lfcThreshold = 1 # Set the threshold for log2FoldChange when running DESeq2 and producing a filtered count matrix. Default is set to 1.
                        )
 {
   ##### Setup #####
@@ -104,6 +104,8 @@ DESeq2_DEA <- function(mainDir, # path to the 'work' directory
           file = sprintf("%s/DESeq2/universe.rds", mainDir))
   
   print("The count matrix has been filtered to remove low counts.")
+  
+  
   ##### Running DESeq2 #####
   # Construct a DESeqDataSet from the cts object and sample information in samples.
   print("Constructing a DESeq dataset from tximport results")

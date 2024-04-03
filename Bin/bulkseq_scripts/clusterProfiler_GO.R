@@ -31,8 +31,8 @@ cluster_Profiler_GO <- function(mainDir, # The path to the working directory
   setwd(mainDir)
   
   # Read in necessary functions
-  source("~/Matthew_Masters/Bin/bulkseq_scripts/biomaRt_annotate.R") # performs annotation
-  source("~/Matthew_Masters/Bin/bulkseq_scripts/GO_bulk.R") # performs clusterProfiler's enrichGO function
+  source(sprintf("%s/biomaRt_annotate.R", bin_path)) # performs annotation
+  source(sprintf("%s/GO_bulk.R", bin_path)) # performs clusterProfiler's enrichGO function
   
   generate_ensembl(mainDir)
   
@@ -169,7 +169,7 @@ compare_cluster_GO <- function(mainDir, # The path to the working directory
   setwd(mainDir)
   
   # Read in necessary functions
-  source("~/Matthew_Masters/Bin/bulkseq_scripts/biomaRt_annotate.R") # performs annotation
+  source(sprintf("%s/biomaRt_annotate.R", bin_path)) # performs annotation
   
   generate_ensembl(mainDir)
   

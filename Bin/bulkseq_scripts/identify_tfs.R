@@ -9,7 +9,7 @@ identify_tfs <- function(mainDir, # path to the working directory
   setwd(mainDir)
   
   # Read in the biomart script
-  source("~/Matthew_Masters/Bin/bulkseq_scripts/biomaRt_annotate.R")
+  source(sprintf("%s/biomaRt_annotate.R", bin_path))
   generate_ensembl(mainDir)
   
   df <- read.csv(sprintf("%s", DEG_list), row.names = 1) #generate a df from a saved .csv file

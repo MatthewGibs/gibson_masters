@@ -1,20 +1,29 @@
 ##### Master bulk RNA-seq script #####
 # Written by Matthew Gibson
 # This script runs an analysis pipeline comprising tximport, DESeq2 and clusterProfiler for the purpose of DEA.
+
 ##### Pipeline Structure #####
+
 # This RNA-seq pipeline contains the following modules:
+
 # 1: Run tximport on the output of the salmon quasi-mapping package.
 # 2: Generate a metadata file for the default dataset used by this pipeline.
 # 3: Run DESeq2 on the count matrix produced by Tximport.
 # 4: Run clusterProfiler for GO enrichment.
 # 5: Run clusterProfiler for KEGG enrichment.
 # 6: Produce auxiliary figures based on all of the above.
-##### tximport #####
-# Generate a count matrix from quant.sf files using Tximport.
-source("~/Matthew_Masters/Bin/bulkseq_scripts/tximport_script.R")
 
-# set the path to the working directory
-mainDir <- "~/Matthew_Masters/Work"
+##### Key parameters ####
+# This pipelines operates based on a specific directory structure using a number of scripts and files.
+# The following paths are used but can be modified to suit your needs:
+
+bin_path <- "~/git/gibson_masters/Bin/bulkseq_scripts" # Set path to the 'Bin' directory which contains essential scripts
+mainDir <- "~/git/gibson_masters/Work" # Set the path to the 'Work' directory, which stores most outputs
+
+
+##### tximport #####
+# Call script to generate a count matrix from quant.sf files using Tximport.
+source(sprintf("%s/tximport_script.R", bin_path))
 
 # Create a character vector containing the names of each sample
 quant_directories <- c("SRR16816545", 
@@ -40,7 +49,7 @@ sample_names <- c("donor1_untreated",
 
 tx2gene_path <- c("~/Matthew_Masters/Raw/Data/bulkseq_data/txp2gene.tsv")
 
-# Run the tximport funtion
+# Run the tximport function
 tximport_salmon(mainDir, # path to the 'work' directory
                 quant_directories, # CHARACTER vector indication the location of all quant.sf files to import in the format "folder.quant/folder"
                 tx2gene_path, # provide the path to the file that matches transcript and gene IDs
@@ -51,25 +60,20 @@ if(exists("object_final")) {rm(object_final)}
 
 ##### Metadata #####
 # Read in the script for generating metadata.
-source("~/Matthew_Masters/Bin/bulkseq_scripts/gen_metadata.R")
-
-# set the path to the working directory
-mainDir <- "~/Matthew_Masters/Work" 
+source(sprintf("%s/gen_metadata.R", bin_path))
 
 # Call the funtion to generate metadata
 generate_metadata(mainDir = mainDir)
 
 ##### DESeq2 #####
 # Perform Differential Expression Analysis using DESeq2.
-source("~/Matthew_Masters/Bin/bulkseq_scripts/DESeq2_script.R")
-
-mainDir <- "~/Matthew_Masters/Work" # set the path to the working directory
+source(sprintf("%s/DESeq2_script.R", bin_path))
 
 # path to a tximport output file (saved in .rds format)
-txi_mtx <- "~/Matthew_Masters/Work/tximport/txi.count.matrix.rds"
+txi_mtx <- sprintf("%s/tximport/txi.count.matrix.rds", mainDir)
 
 # path to the metadata file DESeq will use to inform design
-meta_file <- "~/Matthew_Masters/Work/Annotation/sample_metadata.rds"
+meta_file <- sprintf("%s/Annotation/sample_metadata.rds", mainDir)
 
 # the column of the sample_metadata file which will be used for the design of the DEA
 design <- ~ treatment
@@ -80,10 +84,8 @@ DESeq2_DEA(mainDir = mainDir, # path to the 'work' directory
            design = design,
            lfcThreshold = 1)
 
-##### Generate extra lists of DEGs #####
-source("~/Matthew_Masters/Bin/bulkseq_scripts/gen_DEGs.R")
-
-mainDir <- "~/Matthew_Masters/Work" # set the path to the working directory
+##### Generate lists of common and unique DEGs #####
+source(sprintf("%s/gen_DEGs.R", bin_path))
 
 DEG_list1 <- sprintf("%s/DEG_lists/treatment_GMCSF_vs_none_DEGs.csv", mainDir)
 
@@ -98,10 +100,8 @@ compare_DEGs(mainDir, # path to the working directory
              )
 
 ##### Identify transcription factors #####
-source("~/Matthew_Masters/Bin/bulkseq_scripts/identify_tfs.R")
-source("~/Matthew_Masters/Bin/bulkseq_scripts/gen_DEGs.R")
-
-mainDir <- "~/Matthew_Masters/Work" # set the path to the working directory
+source(sprintf("%s/identify_tfs.R", bin_path))
+source(sprintf("%s/gen_DEGs.R", bind_path))
 
 # Identify the transcription factors within the list of M-CSF differentially expressed genes.
 identify_tfs(mainDir, # path to the working directory
@@ -130,11 +130,9 @@ compare_DEGs(mainDir, # path to the working directory
 
 ##### clusterProfiler GO Enrichment #####
 # Performs GO enrichment through clusterProfiler.
-source("~/Matthew_Masters/Bin/bulkseq_scripts/clusterProfiler_GO.R")
+source(sprintf("%s/clusterProfiler_GO.R", bin_path))
 
-mainDir <- "~/Matthew_Masters/Work"
-
-DESeq2_output <- "~/Matthew_Masters/Work/DESeq2"
+DESeq2_output <- sprintf("%s/DESeq2", mainDir)
 
 # Read in the list containing all sets of DEGs
 DEG_list <- readRDS(sprintf("%s/DEG_lists/GMCSF_and_MCSF_comparison.rds", mainDir)) # Pull the list of universal genes from file.
@@ -143,20 +141,6 @@ cluster_Profiler_GO(mainDir, # The path to the working directory
                     DESeq2_output, # The path to the .rds files output from the DESeq2 script
                     DEG_list, # An object of the 'list' type containing dataframes with a column named 'Gene_name'. The Gene_name column should contain gene names in the ENSG ID format.
                     )
-
-# Run compareCluster on the full list of 5 DEG sets. The DEG lists are reordered for clarity.
-
-# Read in the list containing all sets of DEGs
-DEG_list <- readRDS(sprintf("%s/DEG_lists/GMCSF_and_MCSF_comparison.rds", mainDir)) # Pull the list of universal genes from file.
-DEG_list <- list(DEG_list[[1]], DEG_list[[4]], DEG_list[[3]], DEG_list[[5]], DEG_list[[2]])
-names(DEG_list) <- c("GM-CSF", "GM-CSF_unique", "Common", "M-CSF_unique", "M-CSF")
-
-# Run the function
-compare_cluster_GO(mainDir, # The path to the working directory
-                   DESeq2_output, # The path to the .rds files output from the DESeq2 script
-                   DEG_list, # An object of the 'list' type containing dataframes with a column named 'Gene_name'. The Gene_name column should contain gene names in the ENSG ID format.
-                   comparison_name = "All" # A character indicating what the results of this comparison should be named.
-)
 
 # Run compareCluster on the DEGs for GMCSF and MCSF. This requires subsetting of the DEG_list object.
 
@@ -173,80 +157,15 @@ compare_cluster_GO(mainDir, # The path to the working directory
 )
 
 # Create a summary list of all generated results
-source("~/Matthew_Masters/Bin/bulkseq_scripts/gen_GO_summary.R")
-summarise_GO(mainDir = "~/Matthew_Masters/Work")
+source(sprintf("%s/gen_GO_summary.R", bin_path))
+summarise_GO(mainDir = mainDir)
 
-##### clusterProfiler KEGG enrichment #####
-# Performs KEGG enrichment through clusterProfiler.
-source("~/Matthew_Masters/Bin/bulkseq_scripts/clusterProfiler_KEGG.R")
+##### Identify key transcription factors and their interacting partners #####
+source(sprintf("%s/tf_interactions.R", bin_path))
 
-mainDir <- "~/Matthew_Masters/Work"
-
-DESeq2_output <- "~/Matthew_Masters/Work/DESeq2"
-
-# Read in the list containing all sets of DEGs
-DEG_list <- readRDS(sprintf("%s/DEG_lists/GMCSF_and_MCSF_comparison.rds", mainDir)) # Pull the list of universal genes from file.
-names(DEG_list) <- c("GM-CSF", "M-CSF", "Common", "GM-CSF_unique", "M-CSF_unique")
-
-# This function utilizes clusterProfiler's 'enrichKEGG' function to perform GO enrichment on individual sets of genes.
-cluster_Profiler_KEGG(mainDir, # The path to the working directory
-                      DESeq2_output, # The path to the .rds files output from the DESeq2 script
-                      DEG_list # An object of the 'list' type containing dataframes with a column named 'Gene_name'. The Gene_name column should contain gene names in the ENSG ID format.
-)
-
-##### Visualise and save KEGG pathways #####
-# Performs KEGG enrichment through clusterProfiler.
-source("~/Matthew_Masters/Bin/bulkseq_scripts/clusterProfiler_KEGG.R")
-
-mainDir <- "~/Matthew_Masters/Work"
-
-DEG_output <- read.csv("~/Matthew_Masters/Work/DEG_lists/treatment_GMCSF_vs_none_DEGs.csv", row.names = 1)
-
-pathway_IDs <- read.csv("~/Matthew_Masters/Work/clusterProfiler/KEGG_enrichment/GM-CSF_sig_KEGG.csv")
-pathway_IDs <- pathway_IDs$ID
-
-plot_pathway(mainDir = mainDir, # The path to the working directory.
-             DEG_output = DEG_output, # An dataframe containing ENSG ID's in a Gene_name column, as well as matching log2fold changes in a log2FoldChange column.
-             pathway_IDs = pathway_IDs, # A character vector containing eight-digit characters specifying the pathway(s) to visualize. (example: "hsa04657")
-             test_name = "GMCSF" # A character indicating the name of the DEGs provided, usually treatment type.
-)
-
-DEG_output <- read.csv("~/Matthew_Masters/Work/DEG_lists/treatment_MCSF_vs_none_DEGs.csv", row.names = 1)
-
-pathway_IDs <- read.csv("~/Matthew_Masters/Work/clusterProfiler/KEGG_enrichment/M-CSF_sig_KEGG.csv")
-pathway_IDs <- pathway_IDs$ID
-
-plot_pathway(mainDir = mainDir, # The path to the working directory.
-             DEG_output = DEG_output, # An dataframe containing ENSG ID's in a Gene_name column, as well as matching log2fold changes in a log2FoldChange column.
-             pathway_IDs = pathway_IDs, # A character vector containing eight-digit characters specifying the pathway(s) to visualize. (example: "hsa04657")
-             test_name = "MCSF" # A character indicating the name of the DEGs provided, usually treatment type.
-)
+collate_tf_DEGs(mainDir)
 
 ##### Generate Figures and tables #####
-
-source("~/Matthew_Masters/Bin/bulkseq_scripts/dissertation_plots.R")
-
-mainDir <- "~/Matthew_Masters/Work"
+source(sprintf("%s/dissertation_plots.R", bin_path))
 
 gen_all_plots(mainDir)
-
-circular_GO_heatmap(mainDir, # path to the 'Work' directory
-                    GO_ID = "GO:0050727", 
-                    plot_name = "inflamm_heatmap")
-
-circular_GO_heatmap(mainDir, # path to the 'Work' directory
-                    GO_ID = "GO:0030099", 
-                    plot_name = "myeloid_diff_heatmap")
-
-# L2FC = 1 pathways
-KEGG_compare_pathways(mainDir, specific_ID = "hsa05202")
-KEGG_compare_pathways(mainDir, specific_ID = "hsa05203")
-KEGG_compare_pathways(mainDir, specific_ID = "hsa04613")
-KEGG_compare_pathways(mainDir, specific_ID = "hsa05322")
-
-# L2FC = 2 pathways
-#KEGG_compare_pathways(mainDir, specific_ID = "hsa04640")
-#KEGG_compare_pathways(mainDir, specific_ID = "hsa04657")
-#KEGG_compare_pathways(mainDir, specific_ID = "hsa04668")
-#KEGG_compare_pathways(mainDir, specific_ID = "hsa03320")
-#KEGG_compare_pathways(mainDir, specific_ID = "hsa04110")

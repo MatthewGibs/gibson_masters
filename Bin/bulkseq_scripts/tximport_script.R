@@ -34,7 +34,7 @@ tximport_salmon <- function(mainDir, # path to the 'work' directory
     print("The 'tx2gene' file does not already exist. The file will now be produced, this may take some time.")
     
     # Create the tx2gene object matching transcript and gene IDs.
-    txdb <- makeTxDbFromGFF("~/Matthew_Masters/Raw/Data/bulkseq_data/gencode.v44.genome.gtf.gz")
+    txdb <- makeTxDbFromGFF("~/git/gibson_masters/Raw/Data/bulkseq_data/gencode.v44.genome.gtf.gz")
     k <- keys(txdb, keytype = "TXNAME")
     tx2gene <- select(txdb, k, "GENEID", "TXNAME")
     
@@ -62,7 +62,7 @@ tximport_salmon <- function(mainDir, # path to the 'work' directory
     print("Ensembl IDs are being retained, skipping annotation.")
   } else {
     # Read in the function for acquiring annotation info
-    source("~/Matthew_Masters/Bin/bulkseq_scripts/biomaRt_annotate.R")
+    source(sprintf("%s/biomaRt_annotate.R", bin_path))
     generate_ensembl(mainDir)
     
     genes <- substr(rownames(cts), 1, 15)
