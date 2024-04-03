@@ -1,17 +1,19 @@
 ##### Master bulk RNA-seq script #####
 # Written by Matthew Gibson
-# This script runs an analysis pipeline comprising tximport, DESeq2 and clusterProfiler for the purpose of DEA.
+# This script runs an analysis pipeline comprising tximport, DESeq2 and clusterProfiler.
 
 ##### Pipeline Structure #####
 
 # This RNA-seq pipeline contains the following modules:
 
 # 1: Run tximport on the output of the salmon quasi-mapping package.
-# 2: Generate a metadata file for the default dataset used by this pipeline.
+# 2: Generate a metadata file for the default data set used by this pipeline.
 # 3: Run DESeq2 on the count matrix produced by Tximport.
-# 4: Run clusterProfiler for GO enrichment.
-# 5: Run clusterProfiler for KEGG enrichment.
-# 6: Produce auxiliary figures based on all of the above.
+# 4: Generate a summary of various DEG lists (full, common, and unique).
+# 5: Identify potential transcription factors from lists of DEGs.
+# 6: Run clusterProfiler for GO enrichment, and produce a summary of these results.
+# 7: Identify the differentially expressed interacting partners of key transcription factors
+# 8: Produce auxiliary figures based on all of the above.
 
 ##### Key parameters ####
 # This pipelines operates based on a specific directory structure using a number of scripts and files.
@@ -56,7 +58,6 @@ tximport_salmon(mainDir, # path to the 'work' directory
                 sample_names, # CHARACTER vector naming each sample. This must be in the same order as the directories given in 'quant_directories'
                 annotation_type = "ensembl_gene_id" # Optional variable for setting the type of gene ID or name as row names in the count matrix. The default is "external_gene_name".
                 )
-if(exists("object_final")) {rm(object_final)}
 
 ##### Metadata #####
 # Read in the script for generating metadata.
@@ -101,7 +102,7 @@ compare_DEGs(mainDir, # path to the working directory
 
 ##### Identify transcription factors #####
 source(sprintf("%s/identify_tfs.R", bin_path))
-source(sprintf("%s/gen_DEGs.R", bind_path))
+source(sprintf("%s/gen_DEGs.R", bin_path))
 
 # Identify the transcription factors within the list of M-CSF differentially expressed genes.
 identify_tfs(mainDir, # path to the working directory
@@ -160,12 +161,22 @@ compare_cluster_GO(mainDir, # The path to the working directory
 source(sprintf("%s/gen_GO_summary.R", bin_path))
 summarise_GO(mainDir = mainDir)
 
-##### Identify key transcription factors and their interacting partners #####
+##### Identify the differentially expressed interacting partners of key transcription factors #####
 source(sprintf("%s/tf_interactions.R", bin_path))
 
-collate_tf_DEGs(mainDir)
+collate_tf_DEGs(mainDir = mainDir, # Path to the 'Work' directory
+                TF_names = c("CLOCK", "RB1", "NFKB1", "PPARD", "NR1D2"), # List of transcription factors associated with the GO term of interest
+                GO_term = "regulation_of_inflammatory_response" # Name of the GO term of interest
+)
+
+collate_tf_DEGs(mainDir = mainDir, # Path to the 'Work' directory
+                TF_names = c("SPI1", "RUNX1", "MYC", "MAFB"), # List of transcription factors associated with the GO term of interest
+                GO_term = "myeloid_cell_differentiation" # Name of the GO term of interest
+)
 
 ##### Generate Figures and tables #####
 source(sprintf("%s/dissertation_plots.R", bin_path))
 
 gen_all_plots(mainDir)
+
+gen_tables(mainDir)

@@ -1,0 +1,13 @@
+{
+    "salmon_version": "1.9.0",
+    "libType": "A",
+    "mates1": "SRR16816552/SRR16816552.1.fastq.gz",
+    "mates2": "SRR16816552/SRR16816552.2.fastq.gz",
+    "index": "/mnt/c/Users/Matthew/Documents/Matthew_Masters/Raw/Data/bulkseq_data/bulk_index",
+    "output": "/mnt/c/Users/Matthew/Documents/Matthew_Masters/Work/salmon/SRR16816552",
+    "gcBias": [],
+    "seqBias": [],
+    "posBias": [],
+    "validateMappings": [],
+    "auxDir": "aux_info"
+}

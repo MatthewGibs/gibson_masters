@@ -1,0 +1,199 @@
+﻿"Section Name"	"Series 1 (y)"	"Series 1 (value)"
+"Basic Statistics"	"SRR16816545.1"	1
+"Basic Statistics"	"SRR16816545.2"	1
+"Basic Statistics"	"SRR16816546.1"	1
+"Basic Statistics"	"SRR16816546.2"	1
+"Basic Statistics"	"SRR16816547.1"	1
+"Basic Statistics"	"SRR16816547.2"	1
+"Basic Statistics"	"SRR16816548.1"	1
+"Basic Statistics"	"SRR16816548.2"	1
+"Basic Statistics"	"SRR16816549.1"	1
+"Basic Statistics"	"SRR16816549.2"	1
+"Basic Statistics"	"SRR16816550.1"	1
+"Basic Statistics"	"SRR16816550.2"	1
+"Basic Statistics"	"SRR16816551.1"	1
+"Basic Statistics"	"SRR16816551.2"	1
+"Basic Statistics"	"SRR16816552.1"	1
+"Basic Statistics"	"SRR16816552.2"	1
+"Basic Statistics"	"SRR16816553.1"	1
+"Basic Statistics"	"SRR16816553.2"	1
+"Per Base Sequence Quality"	"SRR16816545.1"	1
+"Per Base Sequence Quality"	"SRR16816545.2"	1
+"Per Base Sequence Quality"	"SRR16816546.1"	1
+"Per Base Sequence Quality"	"SRR16816546.2"	1
+"Per Base Sequence Quality"	"SRR16816547.1"	1
+"Per Base Sequence Quality"	"SRR16816547.2"	1
+"Per Base Sequence Quality"	"SRR16816548.1"	1
+"Per Base Sequence Quality"	"SRR16816548.2"	1
+"Per Base Sequence Quality"	"SRR16816549.1"	1
+"Per Base Sequence Quality"	"SRR16816549.2"	1
+"Per Base Sequence Quality"	"SRR16816550.1"	1
+"Per Base Sequence Quality"	"SRR16816550.2"	1
+"Per Base Sequence Quality"	"SRR16816551.1"	1
+"Per Base Sequence Quality"	"SRR16816551.2"	1
+"Per Base Sequence Quality"	"SRR16816552.1"	1
+"Per Base Sequence Quality"	"SRR16816552.2"	1
+"Per Base Sequence Quality"	"SRR16816553.1"	1
+"Per Base Sequence Quality"	"SRR16816553.2"	1
+"Per Tile Sequence Quality"	"SRR16816545.1"	1
+"Per Tile Sequence Quality"	"SRR16816545.2"	0.5
+"Per Tile Sequence Quality"	"SRR16816546.1"	0.25
+"Per Tile Sequence Quality"	"SRR16816546.2"	0.25
+"Per Tile Sequence Quality"	"SRR16816547.1"	0.25
+"Per Tile Sequence Quality"	"SRR16816547.2"	0.25
+"Per Tile Sequence Quality"	"SRR16816548.1"	0.25
+"Per Tile Sequence Quality"	"SRR16816548.2"	0.25
+"Per Tile Sequence Quality"	"SRR16816549.1"	0.25
+"Per Tile Sequence Quality"	"SRR16816549.2"	0.25
+"Per Tile Sequence Quality"	"SRR16816550.1"	1
+"Per Tile Sequence Quality"	"SRR16816550.2"	0.25
+"Per Tile Sequence Quality"	"SRR16816551.1"	1
+"Per Tile Sequence Quality"	"SRR16816551.2"	0.25
+"Per Tile Sequence Quality"	"SRR16816552.1"	0.25
+"Per Tile Sequence Quality"	"SRR16816552.2"	0.25
+"Per Tile Sequence Quality"	"SRR16816553.1"	0.25
+"Per Tile Sequence Quality"	"SRR16816553.2"	0.25
+"Per Sequence Quality Scores"	"SRR16816545.1"	1
+"Per Sequence Quality Scores"	"SRR16816545.2"	1
+"Per Sequence Quality Scores"	"SRR16816546.1"	1
+"Per Sequence Quality Scores"	"SRR16816546.2"	1
+"Per Sequence Quality Scores"	"SRR16816547.1"	1
+"Per Sequence Quality Scores"	"SRR16816547.2"	1
+"Per Sequence Quality Scores"	"SRR16816548.1"	1
+"Per Sequence Quality Scores"	"SRR16816548.2"	1
+"Per Sequence Quality Scores"	"SRR16816549.1"	1
+"Per Sequence Quality Scores"	"SRR16816549.2"	1
+"Per Sequence Quality Scores"	"SRR16816550.1"	1
+"Per Sequence Quality Scores"	"SRR16816550.2"	1
+"Per Sequence Quality Scores"	"SRR16816551.1"	1
+"Per Sequence Quality Scores"	"SRR16816551.2"	1
+"Per Sequence Quality Scores"	"SRR16816552.1"	1
+"Per Sequence Quality Scores"	"SRR16816552.2"	1
+"Per Sequence Quality Scores"	"SRR16816553.1"	1
+"Per Sequence Quality Scores"	"SRR16816553.2"	1
+"Per Base Sequence Content"	"SRR16816545.1"	0.25
+"Per Base Sequence Content"	"SRR16816545.2"	0.25
+"Per Base Sequence Content"	"SRR16816546.1"	0.25
+"Per Base Sequence Content"	"SRR16816546.2"	0.25
+"Per Base Sequence Content"	"SRR16816547.1"	0.25
+"Per Base Sequence Content"	"SRR16816547.2"	0.25
+"Per Base Sequence Content"	"SRR16816548.1"	0.25
+"Per Base Sequence Content"	"SRR16816548.2"	0.25
+"Per Base Sequence Content"	"SRR16816549.1"	0.25
+"Per Base Sequence Content"	"SRR16816549.2"	0.25
+"Per Base Sequence Content"	"SRR16816550.1"	0.25
+"Per Base Sequence Content"	"SRR16816550.2"	0.25
+"Per Base Sequence Content"	"SRR16816551.1"	0.25
+"Per Base Sequence Content"	"SRR16816551.2"	0.25
+"Per Base Sequence Content"	"SRR16816552.1"	0.25
+"Per Base Sequence Content"	"SRR16816552.2"	0.25
+"Per Base Sequence Content"	"SRR16816553.1"	0.25
+"Per Base Sequence Content"	"SRR16816553.2"	0.25
+"Per Sequence GC Content"	"SRR16816545.1"	1
+"Per Sequence GC Content"	"SRR16816545.2"	1
+"Per Sequence GC Content"	"SRR16816546.1"	1
+"Per Sequence GC Content"	"SRR16816546.2"	0.5
+"Per Sequence GC Content"	"SRR16816547.1"	1
+"Per Sequence GC Content"	"SRR16816547.2"	1
+"Per Sequence GC Content"	"SRR16816548.1"	0.5
+"Per Sequence GC Content"	"SRR16816548.2"	0.25
+"Per Sequence GC Content"	"SRR16816549.1"	1
+"Per Sequence GC Content"	"SRR16816549.2"	0.5
+"Per Sequence GC Content"	"SRR16816550.1"	1
+"Per Sequence GC Content"	"SRR16816550.2"	1
+"Per Sequence GC Content"	"SRR16816551.1"	0.5
+"Per Sequence GC Content"	"SRR16816551.2"	0.5
+"Per Sequence GC Content"	"SRR16816552.1"	0.5
+"Per Sequence GC Content"	"SRR16816552.2"	0.5
+"Per Sequence GC Content"	"SRR16816553.1"	0.5
+"Per Sequence GC Content"	"SRR16816553.2"	0.5
+"Per Base N Content"	"SRR16816545.1"	1
+"Per Base N Content"	"SRR16816545.2"	1
+"Per Base N Content"	"SRR16816546.1"	1
+"Per Base N Content"	"SRR16816546.2"	1
+"Per Base N Content"	"SRR16816547.1"	1
+"Per Base N Content"	"SRR16816547.2"	1
+"Per Base N Content"	"SRR16816548.1"	1
+"Per Base N Content"	"SRR16816548.2"	1
+"Per Base N Content"	"SRR16816549.1"	1
+"Per Base N Content"	"SRR16816549.2"	1
+"Per Base N Content"	"SRR16816550.1"	1
+"Per Base N Content"	"SRR16816550.2"	1
+"Per Base N Content"	"SRR16816551.1"	1
+"Per Base N Content"	"SRR16816551.2"	1
+"Per Base N Content"	"SRR16816552.1"	1
+"Per Base N Content"	"SRR16816552.2"	1
+"Per Base N Content"	"SRR16816553.1"	1
+"Per Base N Content"	"SRR16816553.2"	1
+"Sequence Length Distribution"	"SRR16816545.1"	1
+"Sequence Length Distribution"	"SRR16816545.2"	1
+"Sequence Length Distribution"	"SRR16816546.1"	1
+"Sequence Length Distribution"	"SRR16816546.2"	1
+"Sequence Length Distribution"	"SRR16816547.1"	1
+"Sequence Length Distribution"	"SRR16816547.2"	1
+"Sequence Length Distribution"	"SRR16816548.1"	1
+"Sequence Length Distribution"	"SRR16816548.2"	1
+"Sequence Length Distribution"	"SRR16816549.1"	1
+"Sequence Length Distribution"	"SRR16816549.2"	1
+"Sequence Length Distribution"	"SRR16816550.1"	1
+"Sequence Length Distribution"	"SRR16816550.2"	1
+"Sequence Length Distribution"	"SRR16816551.1"	1
+"Sequence Length Distribution"	"SRR16816551.2"	1
+"Sequence Length Distribution"	"SRR16816552.1"	1
+"Sequence Length Distribution"	"SRR16816552.2"	1
+"Sequence Length Distribution"	"SRR16816553.1"	1
+"Sequence Length Distribution"	"SRR16816553.2"	1
+"Sequence Duplication Levels"	"SRR16816545.1"	0.25
+"Sequence Duplication Levels"	"SRR16816545.2"	0.25
+"Sequence Duplication Levels"	"SRR16816546.1"	0.25
+"Sequence Duplication Levels"	"SRR16816546.2"	0.25
+"Sequence Duplication Levels"	"SRR16816547.1"	0.25
+"Sequence Duplication Levels"	"SRR16816547.2"	0.25
+"Sequence Duplication Levels"	"SRR16816548.1"	0.25
+"Sequence Duplication Levels"	"SRR16816548.2"	0.25
+"Sequence Duplication Levels"	"SRR16816549.1"	0.25
+"Sequence Duplication Levels"	"SRR16816549.2"	0.25
+"Sequence Duplication Levels"	"SRR16816550.1"	0.25
+"Sequence Duplication Levels"	"SRR16816550.2"	0.25
+"Sequence Duplication Levels"	"SRR16816551.1"	0.25
+"Sequence Duplication Levels"	"SRR16816551.2"	0.25
+"Sequence Duplication Levels"	"SRR16816552.1"	0.25
+"Sequence Duplication Levels"	"SRR16816552.2"	0.25
+"Sequence Duplication Levels"	"SRR16816553.1"	0.25
+"Sequence Duplication Levels"	"SRR16816553.2"	0.25
+"Overrepresented Sequences"	"SRR16816545.1"	0.5
+"Overrepresented Sequences"	"SRR16816545.2"	0.5
+"Overrepresented Sequences"	"SRR16816546.1"	0.5
+"Overrepresented Sequences"	"SRR16816546.2"	0.5
+"Overrepresented Sequences"	"SRR16816547.1"	0.5
+"Overrepresented Sequences"	"SRR16816547.2"	0.5
+"Overrepresented Sequences"	"SRR16816548.1"	0.5
+"Overrepresented Sequences"	"SRR16816548.2"	0.5
+"Overrepresented Sequences"	"SRR16816549.1"	0.5
+"Overrepresented Sequences"	"SRR16816549.2"	0.5
+"Overrepresented Sequences"	"SRR16816550.1"	0.5
+"Overrepresented Sequences"	"SRR16816550.2"	0.5
+"Overrepresented Sequences"	"SRR16816551.1"	0.5
+"Overrepresented Sequences"	"SRR16816551.2"	0.5
+"Overrepresented Sequences"	"SRR16816552.1"	0.5
+"Overrepresented Sequences"	"SRR16816552.2"	0.5
+"Overrepresented Sequences"	"SRR16816553.1"	0.5
+"Overrepresented Sequences"	"SRR16816553.2"	0.5
+"Adapter Content"	"SRR16816545.1"	0.25
+"Adapter Content"	"SRR16816545.2"	0.25
+"Adapter Content"	"SRR16816546.1"	0.25
+"Adapter Content"	"SRR16816546.2"	0.25
+"Adapter Content"	"SRR16816547.1"	0.25
+"Adapter Content"	"SRR16816547.2"	0.25
+"Adapter Content"	"SRR16816548.1"	0.25
+"Adapter Content"	"SRR16816548.2"	0.25
+"Adapter Content"	"SRR16816549.1"	0.25
+"Adapter Content"	"SRR16816549.2"	0.25
+"Adapter Content"	"SRR16816550.1"	0.25
+"Adapter Content"	"SRR16816550.2"	0.25
+"Adapter Content"	"SRR16816551.1"	0.25
+"Adapter Content"	"SRR16816551.2"	0.25
+"Adapter Content"	"SRR16816552.1"	0.25
+"Adapter Content"	"SRR16816552.2"	0.25
+"Adapter Content"	"SRR16816553.1"	0.25
+"Adapter Content"	"SRR16816553.2"	0.25

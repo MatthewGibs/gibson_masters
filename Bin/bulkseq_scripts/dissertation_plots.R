@@ -705,8 +705,8 @@ circular_GO_heatmap <- function(mainDir, # path to the 'Work' directory
 }
 ##### Generate Supplementary tables #####
 # recommended path for mainDir: mainDir <- "~/git/gibson_masters/Work"
-circular_GO_heatmap <- function(mainDir, # path to the 'Work' directory
-                                ) 
+gen_tables <- function(mainDir # path to the 'Work' directory
+                                )
   {
   # Read in necessary packages
   deseq_packages <- c("DESeq2", "dplyr", "tidyverse", "data.table", "R.utils")
