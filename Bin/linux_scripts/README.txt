@@ -1,4 +1,4 @@
-This directory contains six scripts as detailed below:
+This directory contains three scripts as detailed below:
 
 Scripts for running salmon, fastqc, and multiqc for the bulkseq data.
 
